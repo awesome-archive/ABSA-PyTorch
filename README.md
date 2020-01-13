@@ -12,12 +12,18 @@
 
 * pytorch >= 0.4.0
 * numpy >= 1.13.3
+* sklearn
 * python 3.6 / 3.7
-* GloVe pre-trained word vectors (See [data_utils.py](./data_utils.py) for more detail)
+* pytorch-transformers == 1.2.0
+  * See [pytorch-transformers](https://github.com/huggingface/pytorch-transformers) for more detail.
+
+To install requirements, run `pip install -r requirements.txt`.
+
+
+For non-BERT-based models,
+GloVe pre-trained word vectors are required (See [data_utils.py](./data_utils.py) for more detail)
   * Download pre-trained word vectors [here](https://github.com/stanfordnlp/GloVe#download-pre-trained-word-vectors),
   * extract the [glove.twitter.27B.zip](http://nlp.stanford.edu/data/wordvecs/glove.twitter.27B.zip) and [glove.42B.300d.zip](http://nlp.stanford.edu/data/wordvecs/glove.42B.300d.zip) to the root directory
-* pytorch-pretrained-bert 0.6.1
-  * See [pytorch-pretrained-BERT](https://github.com/huggingface/pytorch-pretrained-BERT) for more detail.
 
 ## Usage
 
@@ -33,7 +39,8 @@ Refer to [train_k_fold_cross_val.py](./train_k_fold_cross_val.py) for k-fold cro
 
 ### Inference
 
-Please refer to [infer_example.py](./infer_example.py).
+Please refer to [infer_example.py](./infer_example.py) for non-BERT models.
+Please refer to [infer_example_bert_models.py](./infer_example_bert_models.py) for BERT models.
 
 ### Tips
 
@@ -42,6 +49,11 @@ Please refer to [infer_example.py](./infer_example.py).
 * Fine-tuning on the specific task is necessary for releasing the true power of BERT.
 
 ## BERT-based models
+
+### LCF-BERT ([lcf_bert.py](./models/lcf_bert.py))
+Zeng Biqing, Yang Heng, et al. "LCF: A Local Context Focus Mechanism for Aspect-Based Sentiment Classification." Applied Sciences. 2019, 9, 3389. [[pdf]](https://www.mdpi.com/2076-3417/9/16/3389/pdf)
+
+![lcf](assets/lcf.png)
 
 ### AEN-BERT ([aen.py](./models/aen.py))
 Song, Youwei, et al. "Attentional Encoder Network for Targeted Sentiment Classification." arXiv preprint arXiv:1902.09314 (2019). [[pdf]](https://arxiv.org/pdf/1902.09314.pdf)
